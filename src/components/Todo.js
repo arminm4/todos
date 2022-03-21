@@ -13,28 +13,33 @@ const Todo = (props) => {
       <span className="p-1 lead fw-bolder">
         {todo.complete ? (
           <del style={{ color: "red" }}>
-            <span style={{ color: "black" }}>{todo.name}</span>
+            <span style={{ color: "gray" }}>{todo.name}</span>
           </del>
         ) : (
           todo.name
         )}
       </span>
       <span>
-        <button
+        <input
           style={{
             marginLeft: "8px",
             marginRight: "8px",
+            marginTop: "0px",
+            width: "38px",
+            height: "38px",
           }}
-          className="btn btn-warning fw-bolder"
-          onClick={(e) => dispatch({ type: "TOGGLE", payload: todo.id })}
-        >
-          تغییر وضعیت
-        </button>
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckChecked"
+          checked={todo.complete ? true : false}
+          onChange={(e) => dispatch({ type: "TOGGLE", payload: todo.id })}
+        />
         <button
           className="btn btn-danger fw-bolder"
           onClick={(e) => dispatch({ type: "REMOVE", payload: todo.id })}
         >
-          حذف
+          <i class="fa fa-trash bg-danger"></i>
         </button>
       </span>
     </div>
